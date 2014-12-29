@@ -2,7 +2,7 @@
 # task :umeng_api do
 #   # Task goes here
 # end
-namespace :umengapi do
+namespace :umeng_api do
     task :setup do 
         UmengApi.setup do |config|
             config.url = 'www.baidu.com'
