@@ -8,16 +8,24 @@ class UmengApi::Sender
     # end
 
     def send_broadcast_message(record, opts={})
-      p record, opts
-      send_message(opts)
+      json = record.as_cast_json do |custom, queue|
+
+      end
+      send_message(json)
     end
 
     def send_groupcast_message(record, opts={})
-      send_message(opts)
+      json = record.as_cast_json do |custom, queue|
+
+      end
+      send_message(json)
     end
 
     def send_unicast_message(record, opts={})
-      send_message(opts)
+      json = record.as_cast_json do |custom, queue|
+
+      end
+      send_message(json)
     end
   end
 end

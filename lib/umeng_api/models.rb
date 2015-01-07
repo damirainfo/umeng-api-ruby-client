@@ -6,7 +6,7 @@ module UmengApi
 
     def send_umeng_message(type, *args)
       p '====DIRECT===', type, args
-      UmengApi::Service.sender.send(type, self, *args)
+      UmengApi.sender.send(type, self, *args)
     end
 
   end

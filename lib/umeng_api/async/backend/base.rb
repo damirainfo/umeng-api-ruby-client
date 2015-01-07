@@ -13,13 +13,13 @@ module UmengApi
         def perform(method, resource_class, resource_id, *args)
           resource = resource_class.constantize.to_adapter.get!(resource_id)
           args[-1] = args.last.symbolize_keys if args.last.is_a?(Hash)
-          sender_class(resource).send(method, resource, *args).deliver
+          sender_class(resource).send(method, resource, *args)
         end
 
         private
 
         def sender_class(resource = nil)
-          @sender_class || UmengApi::Service.sender
+          @sender_class || UmengApi.sender
         end
       end
     end

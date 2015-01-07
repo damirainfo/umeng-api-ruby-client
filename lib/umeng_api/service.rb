@@ -6,10 +6,10 @@ require 'digest'
 module UmengApi
 
   module Service
-    autoload :Helpers,      "umeng_api/service/helpers"
-
+    autoload :Helpers, "umeng_api/service/helpers"
+  end
     mattr_accessor :url
-    @@url = %q(http://msg.umeng.com/api/send)
+    @@url = %q(http://msg.umeng.com)
 
     mattr_accessor :appkey
 
@@ -48,12 +48,6 @@ module UmengApi
       @@sender_ref = ref(class_name)
     end
     self.sender = "UmengApi::Sender"
-
-    #validation_token为appkey, app_master_secret与timestamp的MD5码
-    def self.generate_validation_token(timestamp)
-      Digest::MD5.hexdigest([@@appkey, @@app_master_secret, timestamp].join)
-    end
-  end
 end
 
 require 'umeng_api/models'
